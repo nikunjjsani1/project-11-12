@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tip Calculator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Tip Calculator</h1>
+  <div id="calculator">
+    <label for="billAmount">Bill Amount:</label>
+    <input type="number" id="billAmount" placeholder="Enter bill amount"> <br>
+
+    <label for="tipPercentage">Tip Percentage:</label>
+    <input type="number" id="tipPercentage" placeholder="Enter tip percentage"> <br>
+
+    <label for="numOfPeople">Number of People:</label>
+    <input type="number" id="numOfPeople" placeholder="Enter number of people"> <br>
+
+    <button onclick="calculateTip()">Calculate Tip</button>
+
+    <p id="tipAmount"></p>
+    <p id="totalAmount"></p>
+    <p id="amountPerPerson"></p>
+  </div>
+
+  <script>
+  function calculateTip() {
+  var billAmount = parseFloat(document.getElementById('billAmount').value);
+  var tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
+  var numOfPeople = parseInt(document.getElementById('numOfPeople').value);
+
+  if (isNaN(billAmount) || isNaN(tipPercentage) || isNaN(numOfPeople)) {
+    alert('Please enter valid values.');
+    return;
+  }
+
+  var tipAmount = billAmount * (tipPercentage / 100);
+  var totalAmount = billAmount + tipAmount;
+  var amountPerPerson = totalAmount / numOfPeople;
+
+  document.getElementById('tipAmount').innerHTML = 'Tip Amount: $ ' + tipAmount.toFixed(2);
+  document.getElementById('totalAmount').innerHTML = 'Total Amount: $ ' + totalAmount.toFixed(2);
+  document.getElementById('amountPerPerson').innerHTML = 'Amount per $ ' + amountPerPerson.toFixed(2);
+}
+
+  </script>
+</body>
+</html>
